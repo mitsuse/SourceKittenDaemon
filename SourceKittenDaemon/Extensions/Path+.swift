@@ -7,7 +7,7 @@ extension Path {
         case .Absolute(let path):
             return NSURL(fileURLWithPath: path).URLByStandardizingPath
         case .RelativeTo(.SourceRoot, let path):
-            return project.srcRoot.URLByAppendingPathComponent(path).URLByStandardizingPath
+            return project.srcRoot.URLByAppendingPathComponent(path)?.URLByStandardizingPath
         case .RelativeTo(_, let path):
             return NSURL(fileURLWithPath: path).URLByStandardizingPath
         }

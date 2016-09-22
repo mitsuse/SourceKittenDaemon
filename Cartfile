@@ -1,3 +1,3 @@
-github "izqui/taylor" "697446f"
-github "Carthage/Commandant" == 0.7.0
-github "jpsim/SourceKitten" == 0.11.0
+github "mitsuse/taylor" "support-xcode8.0"
+github "Carthage/Commandant" ~> 0.10.1
+github "jpsim/SourceKitten" "23f3d4fafb760640970ddb8e95a2eb7191aa3892"

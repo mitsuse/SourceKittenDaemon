@@ -4,25 +4,25 @@
   ignore = dirty
 [submodule "Carthage/Checkouts/Result"]
 	path = Carthage/Checkouts/Result
-	url = https://github.com/antitypical/Result.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/antitypical/Result.git
   ignore = dirty
 [submodule "Carthage/Checkouts/Commandant"]
 	path = Carthage/Checkouts/Commandant
-	url = https://github.com/Carthage/Commandant.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/Carthage/Commandant.git
   ignore = dirty
 [submodule "Carthage/Checkouts/SwiftSockets"]
 	path = Carthage/Checkouts/SwiftSockets
-	url = https://github.com/alwaysrightinstitute/SwiftSockets.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/mitsuse/SwiftSockets.git
   ignore = dirty
 [submodule "Carthage/Checkouts/SWXMLHash"]
 	path = Carthage/Checkouts/SWXMLHash
-	url = https://github.com/drmohundro/SWXMLHash.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/drmohundro/SWXMLHash.git
   ignore = dirty
 [submodule "Carthage/Checkouts/SourceKitten"]
 	path = Carthage/Checkouts/SourceKitten
-	url = https://github.com/jpsim/SourceKitten.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/jpsim/SourceKitten.git
   ignore = dirty
 [submodule "Carthage/Checkouts/taylor"]
 	path = Carthage/Checkouts/taylor
-	url = https://github.com/izqui/taylor.git
+	url = https://1310c3a24ee17b183cb7be32b275e54d381ae5a7@github.com/mitsuse/taylor.git
   ignore = dirty

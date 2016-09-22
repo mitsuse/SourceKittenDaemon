@@ -19,30 +19,23 @@ struct ServerStartCommand: CommandType {
     let verb = "start"
     let function = "Start the Completion Server"
 
-    func run(mode: CommandMode) -> Result<(), CommandantError<SourceKittenDaemonError>> {
-        return ServerStartCompleteOptions.evaluate(mode).flatMap { options in
-            if options.project.isEmpty {
-                return .Failure(.CommandError(.InvalidArgument(
-                    description: "Please provide a project")))
-            }
+    func run(options: ServerStartCompleteOptions) -> Result<(), SourceKittenDaemonError> {
+        do {
+            let type = ProjectType.Project(project: options.project)
+            let project = try Project(
+                    type: type,
+                    scheme: options.scheme.isEmpty ? nil : options.scheme,
+                    target: options.target.isEmpty ? nil : options.target,
+                    configuration: options.configuration)
 
-            do {
-                let type = ProjectType.Project(project: options.project)
-                let project = try Project(
-                        type: type,
-                        scheme: options.scheme.isEmpty ? nil : options.scheme,
-                        target: options.target.isEmpty ? nil : options.target,
-                        configuration: options.configuration)
+            let server = CompletionServer(project: project, port: options.port)
+            server.start()
 
-                let server = CompletionServer(project: project, port: options.port)
-                server.start()
-
-                return .Success()
-            } catch (let e as ProjectError) {
-                return .Failure(.CommandError(.Project(e)))
-            } catch (_) {
-                return .Failure(.CommandError(.Unknown))
-            }
+            return .Success()
+        } catch (let e as ProjectError) {
+            return .Failure(.Project(e))
+        } catch (_) {
+            return .Failure(.Unknown)
         }
     }
 }
@@ -70,7 +63,7 @@ struct ServerStartCompleteOptions: OptionsType {
 
     static func evaluate(m: CommandMode)
     -> Result<ServerStartCompleteOptions, CommandantError<SourceKittenDaemonError>> {
-        return create
+        let result: Result<ServerStartCompleteOptions, CommandantError<SourceKittenDaemonError>> = create
         <*> m <| Option(key: "project",
                         defaultValue: "",
                         usage: "Xcode project to run on")
@@ -90,6 +83,12 @@ struct ServerStartCompleteOptions: OptionsType {
         <*> m <| Option(key: "port",
                         defaultValue: 8081,
                         usage: "The port to start on")
+
+        if result.value?.project.isEmpty == true {
+            return .Failure(.CommandError(.InvalidArgument(description: "Please provide a project")))
+        } else {
+            return result
+        }
     }
 
 }

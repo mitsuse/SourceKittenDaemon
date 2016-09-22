@@ -27,7 +27,7 @@ struct ServerTestCommand: CommandType {
     let verb = "test"
     let function = "mock command for running the test suite"
     
-    func run(mode: CommandMode) -> Result<(), CommandantError<SourceKittenDaemonError>> {
+    func run(options: NoOptions<SourceKittenDaemonError>) -> Result<(), SourceKittenDaemonError> {
         let delegate = TimerDelegate()
         
         let app = NSApplication.sharedApplication()

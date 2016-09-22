@@ -1,6 +1,6 @@
 import Foundation
 
-enum SourceKittenDaemonError: CustomStringConvertible {
+enum SourceKittenDaemonError: ErrorType, CustomStringConvertible {
     /// One or more argument was invalid.
     case InvalidArgument(description: String)
     case Project(ProjectError)
